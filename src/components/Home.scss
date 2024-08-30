@@ -1,0 +1,89 @@
+/* Home.module.scss */
+$blackColor: black;
+$whiteColor: rgb(248, 240, 240);
+.add-expenses {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: $whiteColor;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px $blackColor;
+}
+
+form {
+    display: flex;
+
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input,
+select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+
+    &:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+}
+
+select {
+    appearance: none;
+}
+
+option {
+    padding: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+.home-div{
+  display: flex;
+  height: 100%;
+  width: 60%;
+  max-width: 80%;
+  padding:0 2rem;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #007bff;
+  margin: 5% 0;
+  border-radius: 8px;
+
+  h2{
+    text-align: center;
+  } 
+  
+}
+
+.plans-btn{
+    margin: 1rem auto;
+    background-color: aquamarine;
+    color: #3d3939;
+    width: 200px;
+    &:hover{
+        background-color: yellow;
+    }
+}
