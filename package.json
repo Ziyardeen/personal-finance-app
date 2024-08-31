@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "auto-fix-deploy": "npm run lint:fix && git add . && git commit -m 'Auto-fixed lint and type errors' && git push origin main",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix && tsc --noEmit --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",

@@ -25,32 +25,43 @@
 //     },
 // })
 
+// .eslintrc.js
 import { ESLint } from "eslint";
 import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import eslintParser from "@typescript-eslint/parser";
 
-export default new ESLint({
-  baseConfig: {
-    parser: eslintParser,
-    plugins: [eslintPlugin],
-    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-    rules: {
-      ...eslintPlugin.configs.recommended.rules,
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
-    },
+// Define configuration
+const eslintConfig = {
+  parser: eslintParser,
+  plugins: ["@typescript-eslint", "react-hooks", "react-refresh"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+  ],
+  rules: {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+  },
+  globals: {
+    browser: "readonly",
   },
   overrides: [
     {
       files: ["**/*.{ts,tsx}"],
-      languageOptions: {
+      parserOptions: {
         ecmaVersion: 2020,
-        globals: globals.browser,
+        sourceType: "module",
       },
     },
   ],
-});
+  ignorePatterns: ["dist", "build/", "node_modules/"],
+};
+
+// Export configuration
+export default eslintConfig;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, } from 'react'
 import './Home.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
 

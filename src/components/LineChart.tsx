@@ -1,5 +1,5 @@
 import './chart.scss'
-import { Audio } from 'react-loader-spinner'
+
 
 import React, { useEffect, useState } from 'react';
 import {
@@ -37,12 +37,12 @@ interface ExtractedData {
 
 const LineChartComponent = () => {
   const [plans, setPlans] = useState<Plans[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+
 
   useEffect(() => {
     getPlans()
       .then((fetchedPlans) => {
-        setLoading(true)
+       
         console.log(fetchedPlans,"ppppppp");
         
         setPlans(fetchedPlans);

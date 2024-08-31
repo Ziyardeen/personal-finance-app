@@ -1,5 +1,5 @@
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
+import { useState,  useEffect } from "react";
 import Nav from "./Nav";
 
 import "./display.scss";
@@ -77,11 +77,9 @@ const Display = () => {
 loading? <Audio
 height="80"
 width="80"
-radius="9"
 color="green"
 ariaLabel="loading"
-wrapperStyle
-wrapperClass
+
 /> :
     <div className="plan-list">
       <Nav />
