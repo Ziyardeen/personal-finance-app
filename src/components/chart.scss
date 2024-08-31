@@ -1,0 +1,36 @@
+.chart{
+    padding: 10px 10vw;
+    // margin: 30px 0;
+    border-radius: 10px;
+    width: 80vw;
+    height: 100vh;
+    background-color: #e9845830;
+    
+}
+
+
+
+
+// LINE CHART COMPONENT
+.chart-tooltip {
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 4px; 
+    padding: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    max-width: 200px; 
+    font-size: 14px; 
+  }
+  
+  .chart-tooltip-label {
+    font-weight: bold; 
+    margin: 0; 
+  }
+  
+  .chart-tooltip-value {
+    margin: 5px 0 0; 
+  }
+  
+  .chart-tooltip-revenue {
+    color: #333; 
+  }
+  

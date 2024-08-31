@@ -1,0 +1,20 @@
+.nav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+
+    li{
+        list-style-type: none;
+
+        a{
+            text-decoration: none;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.2rem;
+        }
+    }
+}

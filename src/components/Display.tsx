@@ -1,5 +1,6 @@
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import Nav from "./Nav";
 
 import "./display.scss";
 import { deletePlan } from "../../backend";
@@ -9,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { setPlans } from "../features/planSlice";
 import { getPlans } from "../../backend";
+import { Audio } from 'react-loader-spinner'
 
 
 
@@ -29,6 +31,7 @@ const Display = () => {
 
   const planList = useSelector((state: RootState) => state.plans.plans);
   const [expandIndex, setExpandIndex] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate()
   const dispatch = useDispatch()
  
@@ -47,6 +50,7 @@ const Display = () => {
         .then((data) => {
            
             dispatch(setPlans(data))
+            setLoading(false)
         })
         .catch((err) => {
             console.log(err)
@@ -70,10 +74,20 @@ const Display = () => {
 
   return (
     
-
+loading? <Audio
+height="80"
+width="80"
+radius="9"
+color="green"
+ariaLabel="loading"
+wrapperStyle
+wrapperClass
+/> :
     <div className="plan-list">
+      <Nav />
       <h1 >Expense List</h1>
       <button className="enter-task" onClick={()=> navigate('/')}>Enter Task</button>
+     
      
     <div className="scroll">
 
