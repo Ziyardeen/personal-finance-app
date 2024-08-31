@@ -75,7 +75,7 @@ const LineChartComponent = () => {
   console.log(plans, "Plans Data");
 
   return (
-    <ResponsiveContainer width="100%" height="90%">
+    <ResponsiveContainer width="100%" height="80%">
       
       <LineChart
         width={500}
@@ -90,7 +90,7 @@ const LineChartComponent = () => {
        
        <CartesianGrid strokeDasharray="3 3" /> 
         <XAxis dataKey="date" />
-        <YAxis />
+        <YAxis domain={[0, 'auto']}/>
         <Tooltip content={<CustomTooltip />} />
         <Legend />
 

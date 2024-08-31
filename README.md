@@ -48,3 +48,6 @@ export default tseslint.config({
     },
 })
 ```
+
+When Faced with npm installation issue with typescript, run
+npm config set legacy-peer-deps true
