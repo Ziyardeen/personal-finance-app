@@ -75,7 +75,7 @@ const LineChartComponent = () => {
 
   interface DateEntry {
     date: string;
-    [key: string]: any; 
+    [key: string]: number | string;
   }
 
   const extractedDates = extract.map((plan) => {
@@ -86,22 +86,20 @@ const LineChartComponent = () => {
   const arr:DateEntry[] = []
 
   uniquesExtractedDates.forEach((date) => {
-    arr.push({date:date})
+    arr.push({date:date ?? ''})
   })
 
-  extract.map((plan) => {
-    for(let i of arr){
-      if(i.date === plan.date){
-        for(let key in plan){
-          if(key !== 'date'){
-            i[key] = plan[key]
-          }
-          // console.log(key,'KEY');
-          
+  extract.forEach((plan) => {
+    const entry = arr.find((i) => i.date === plan.date);
+    if (entry) {
+      Object.entries(plan).forEach(([key, value]) => {
+        if (key !== 'date') {
+          entry[key] = value;
         }
-      }
+      });
     }
-  })
+  });
+
 
   const finalFormat = arr.map((entry) => {
     ['expense', 'savings', 'income', 'investment', 'borrow', 'other'].forEach((category) => {
