@@ -52,6 +52,8 @@ const LineChartComponent = () => {
       });
   }, []);
 
+ 
+
   const extract: ExtractedData[] = plans.map((plan) => {
     switch (plan.category) {
       case 'savings':
@@ -71,8 +73,56 @@ const LineChartComponent = () => {
     }
   });
 
-  console.log(extract, "Extracted Data");
-  console.log(plans, "Plans Data");
+  interface DateEntry {
+    date: string;
+    [key: string]: any; 
+  }
+
+  const extractedDates = extract.map((plan) => {
+    return plan.date
+  })
+  const uniquesExtractedDates:(string | undefined)[] =  [...new Set(extractedDates)]
+
+  const arr:DateEntry[] = []
+
+  uniquesExtractedDates.forEach((date) => {
+    arr.push({date:date})
+  })
+
+  extract.map((plan) => {
+    for(let i of arr){
+      if(i.date === plan.date){
+        for(let key in plan){
+          if(key !== 'date'){
+            i[key] = plan[key]
+          }
+          // console.log(key,'KEY');
+          
+        }
+      }
+    }
+  })
+
+  const finalFormat = arr.map((entry) => {
+    ['expense', 'savings', 'income', 'investment', 'borrow', 'other'].forEach((category) => {
+      if(entry[category] === undefined){
+        console.log("hell0");
+        
+        entry[category] = 0
+      }
+    })
+    return entry
+  })
+
+  // console.log(extract, "extract");
+  // console.log(extractedDates, "extracted dates");
+  // console.log(uniquesExtractedDates, "Unique extracted dates");
+  // console.log(arr, "arr");
+  // console.log(finalFormat, "FInal arr");
+
+  
+
+  
 
   return (
     <ResponsiveContainer width="100%" height="80%">
@@ -80,7 +130,7 @@ const LineChartComponent = () => {
       <LineChart
         width={500}
         height={300}
-        data={extract}
+        data={finalFormat}
         margin={{
           right: 30,
           top:30,
@@ -113,29 +163,26 @@ interface CustomTooltipProps {
     payload?: any[];
     label?: string;
   }
-  
   const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
     if (active && payload && payload.length > 0) {
-      // Ensure that payload[0] and payload[1] exist before accessing their properties
-      console.log(payload,"ooooooooo");
-      
-      const revenueValue = payload[0]?.value;
-      
-  
       return (
         <div className="chart-tooltip">
           <p className="chart-tooltip-label">{label}</p>
-          {revenueValue !== undefined && (
-            <p className="chart-tooltip-value">
-              {payload[0].name.toUpperCase()}: 
-              <span className="chart-tooltip-revenue"> £{revenueValue}</span>
+          {payload.map((item, index) => (
+            <p key={index} className="chart-tooltip-value">
+              {item.name.toUpperCase()}: 
+              <span className="chart-tooltip-revenue"> £{item.value}</span>
             </p>
-  )}
-        </div>      
-
+          ))}
+        </div>
       );
     }
   
     return null;
   };
   
+     
+      
+      
+  
+ 
