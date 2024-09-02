@@ -112,11 +112,14 @@ const LineChartComponent = () => {
     return entry
   })
 
+  const soretedData = finalFormat.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
   // console.log(extract, "extract");
   // console.log(extractedDates, "extracted dates");
   // console.log(uniquesExtractedDates, "Unique extracted dates");
   // console.log(arr, "arr");
   // console.log(finalFormat, "FInal arr");
+  console.log(soretedData, "sorted Data");
 
   
 
@@ -128,7 +131,7 @@ const LineChartComponent = () => {
       <LineChart
         width={500}
         height={300}
-        data={finalFormat}
+        data={soretedData}
         margin={{
           right: 30,
           top:30,
